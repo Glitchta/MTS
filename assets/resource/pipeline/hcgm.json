@@ -1,0 +1,113 @@
+{
+    "符文-点击购买": {
+        "recognition": "OCR",
+        "expected": "黄金价格",
+        "action": "Click",
+        "next": [
+            "符文-点击购买1"
+        ],
+        "on_error": [
+            "符文-重启传奇商店"
+        ]
+    },
+    "符文-点击购买1": {
+        "recognition": "OCR",
+        "expected": "黄金价格",
+        "action": "Click",
+        "next": [
+            "符文-点击购买2"
+        ],
+        "on_error": [
+            "符文-重启传奇商店"
+        ]
+    },
+    "符文-点击购买2": {
+        "recognition": "OCR",
+        "expected": "黄金价格",
+        "action": "Click",
+        "next": [
+            "符文-点击购买3"
+        ],
+        "on_error": [
+            "符文-重启传奇商店"
+        ]
+    },
+    "符文-点击购买3": {
+        "recognition": "OCR",
+        "expected": "黄金价格",
+        "action": "Click",
+        "next": [
+            "符文-点击购买4"
+        ],
+        "on_error": [
+            "符文-重启传奇商店"
+        ]
+    },
+    "符文-点击购买4": {
+        "recognition": "OCR",
+        "expected": "黄金价格",
+        "action": "Click",
+        "next": [
+            "符文-点击购买5"
+        ],
+        "on_error": [
+            "符文-重启传奇商店"
+        ]
+    },
+    "符文-点击购买5": {
+        "recognition": "OCR",
+        "expected": "黄金价格",
+        "action": "Click",
+        "next": [
+            "符文-点击购买6"
+        ],
+        "on_error": [
+            "符文-重启传奇商店"
+        ]
+    },
+    "符文-点击购买6": {
+        "recognition": "OCR",
+        "expected": "黄金价格",
+        "action": "Click",
+        "next": [
+            "符文-点击购买7"
+        ],
+        "on_error": [
+            "符文-重启传奇商店"
+        ]
+    },
+    "符文-点击购买7": {
+        "recognition": "OCR",
+        "expected": "黄金价格",
+        "action": "Click",
+        "next": [
+            "符文-点击购买8"
+        ],
+        "on_error": [
+            "符文-重启传奇商店"
+        ]
+    },
+    "符文-点击购买8": {
+        "recognition": "OCR",
+        "expected": "黄金价格",
+        "action": "Click",
+        "next": [
+            "符文-关闭购买"
+        ],
+        "on_error": [
+            "符文-重启传奇商店"
+        ]
+    },
+    "符文-关闭购买": {
+        "recognition": "TemplateMatch",
+        "template": "关闭.png",
+        "action": "Click",
+        "next": [
+            "符文-合成卓越符文石",
+            "符文-点击关闭"
+        ],
+        "on_error": [
+            "符文-重启传奇商店"
+        ]
+    }
+}

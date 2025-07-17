@@ -1,0 +1,175 @@
+{
+    "月光": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": [
+            "月光-启动传奇商店"
+        ]
+    },
+    "月光-启动传奇商店": {
+        "recognition": "DirectHit",
+        "action": "StartApp",
+        "package": "com.ripostegames.shopr",
+        "post_delay": 20000,
+        "next": [
+            "月光-点击关闭",
+            "月光-检测是否打开",
+            "月光-启动中"
+        ],
+        "on_error": [
+            "月光-重启传奇商店"
+        ]
+    },
+    "月光-重启传奇商店": {
+        "recognition": "DirectHit",
+        "action": "StopApp",
+        "package": "com.ripostegames.shopr",
+        "next": [
+            "月光-启动传奇商店"
+        ]
+    },
+    "月光-启动中" :{
+        "recognition": "OCR",
+        "expected": "传奇商店",
+        "action": "DoNothing",
+        "timeout": 60000,
+        "next": [
+            "月光-检测是否打开",
+            "月光-点击关闭"
+        ],
+        "on_error": [
+            "月光-重启传奇商店"
+        ]
+    },
+    "月光-检测是否打开": {
+        "recognition": "TemplateMatch",
+        "template": "三条杠.png",
+        "action": "DoNothing",
+        "post_delay": 5000,
+        "next": [
+            "月光-收东西"
+        ],
+        "on_error": [
+            "月光-点击制作",
+            "月光-点击关闭",
+            "月光-重启传奇商店"
+        ]
+    },
+    "月光-点击关闭" : {
+        "recognition": "TemplateMatch",
+        "template": "关闭.png",
+        "action": "Click",
+        "timeout": 2000,
+        "next": [
+            "月光-点击关闭"
+        ],
+        "on_error": [
+            "月光-检测是否打开",
+            "月光-重启传奇商店"
+        ]
+    },
+    "月光-收东西": {
+        "recognition": "TemplateMatch",
+        "template": "就绪.png",
+        "action": "Click",
+        "next": [
+            "月光-收东西",
+            "月光-点击关闭"
+        ],
+        "on_error": [
+            "月光-点击制作",
+            "月光-重启传奇商店"
+        ]
+    },
+    "月光-点击制作": {
+        "recognition": "TemplateMatch",
+        "template": "制作.png",
+        "action": "Click",
+        "post_delay": 2000,
+        "next": [
+            "月光-判断是否是全部",
+            "月光-点击全部",
+            "月光-制作栏位已满"
+        ],
+        "on_error": [
+            "月光-重启传奇商店"
+        ]
+    },
+    "月光-判断是否是全部": {
+        "recognition": "TemplateMatch",
+        "template": "亮全部.png",
+        "action": "DoNothing",
+        "timeout": 2000,
+        "next": [
+            "月光-点击收藏"
+        ],
+        "on_error": [
+            "月光-重启传奇商店"
+        ]
+    },
+    "月光-点击全部" : {
+        "recognition": "TemplateMatch",
+        "template": "全部.png",
+        "action": "Click",
+        "timeout": 2000,
+        "threshold": 0.85,
+        "next": [
+            "月光-点击收藏"
+        ],
+        "on_error": [
+            "月光-重启传奇商店"
+        ]
+    },
+    "月光-点击收藏": {
+        "recognition": "TemplateMatch",
+        "template": "收藏.png",
+        "action": "Click",
+        "next": [
+            "制作完美月光石"
+        ],
+        "on_error": [
+            "月光-重启传奇商店"
+        ]
+    },
+    "制作完美月光石": {
+        "recognition": "OCR",
+        "expected": "完美月光石",
+        "action": "Click",
+        "post_delay": 5000,
+        "timeout": 5000,
+        "next": [
+            "制作完美月光石",
+            "月光-点击制作"
+        ],
+        "on_error": [
+            "月光-重启传奇商店"
+        ]
+    },
+    "月光-制作栏位已满" :{
+        "recognition": "TemplateMatch",
+        "template": "添加制作栏.png",
+        "action": "DoNothing",
+        "next": [
+            "月光-关闭传奇商店"
+        ],
+        "on_error": [
+            "月光-重启传奇商店"
+        ]
+    },
+    "月光-关闭传奇商店": {
+        "recognition": "DirectHit",
+        "action": "StopApp",
+        "package": "com.ripostegames.shopr",
+        "next": [
+            "等待12分"
+        ]
+    },
+    "等待12分": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "post_delay": 720000,
+        "next": [
+            "符文"
+        ]
+    }
+}

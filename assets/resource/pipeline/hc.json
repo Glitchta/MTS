@@ -1,0 +1,221 @@
+{
+    "符文": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": [
+            "符文-启动传奇商店"
+        ]
+    },
+    "符文-启动传奇商店": {
+        "recognition": "DirectHit",
+        "action": "StartApp",
+        "package": "com.ripostegames.shopr",
+        "post_delay": 20000,
+        "next": [
+            "符文-点击关闭",
+            "符文-检测是否打开",
+            "符文-启动中"
+        ],
+        "on_error": [
+            "符文-重启传奇商店"
+        ]
+    },
+    "符文-重启传奇商店": {
+        "recognition": "DirectHit",
+        "action": "StopApp",
+        "package": "com.ripostegames.shopr",
+        "next": [
+            "符文-启动传奇商店"
+        ]
+    },
+    "符文-启动中" :{
+        "recognition": "OCR",
+        "expected": "传奇商店",
+        "action": "DoNothing",
+        "timeout": 60000,
+        "next": [
+            "符文-点击关闭",
+            "符文-检测是否打开"
+            
+        ],
+        "on_error": [
+            "符文-重启传奇商店"
+        ]
+    },
+    "符文-检测是否打开": {
+        "recognition": "TemplateMatch",
+        "template": "三条杠.png",
+        "action": "DoNothing",
+        "post_delay": 5000,
+        "next": [
+            "符文-收东西"
+        ],
+        "on_error": [
+            "符文-点击制作",
+            "符文-点击关闭",
+            "符文-重启传奇商店"
+        ]
+    },
+    "符文-点击关闭" : {
+        "recognition": "TemplateMatch",
+        "template": "关闭.png",
+        "action": "Click",
+        "next": [
+            "符文-点击关闭"
+        ],
+        "on_error": [
+            "符文-检测是否打开",
+            "符文-重启传奇商店"
+        ]
+    },
+    "符文-收东西": {
+        "recognition": "TemplateMatch",
+        "template": "就绪.png",
+        "action": "Click",
+        "next": [
+            "符文-收东西",
+            "符文-点击关闭"
+        ],
+        "on_error": [
+            "符文-点击制作",
+            "符文-重启传奇商店"
+        ]
+    },
+    "符文-点击制作": {
+        "recognition": "TemplateMatch",
+        "template": "制作.png",
+        "action": "Click",
+        "next": [
+            "符文-点击合成",
+            "符文-制作栏位已满"
+        ],
+        "on_error": [
+            "符文-重启传奇商店"
+        ]
+    },
+    "符文-点击合成" : {
+        "recognition": "TemplateMatch",
+        "template": "合成.png",
+        "action": "Click",
+        "post_delay": 2000,
+        "next": [
+            "符文-判断是否是全部",
+            "符文-点击全部"
+        ],
+        "on_error": [
+            "符文-重启传奇商店"
+        ]
+    },
+    "符文-判断是否是全部": {
+        "recognition": "TemplateMatch",
+        "template": "亮全部.png",
+        "action": "DoNothing",
+        "timeout": 2000,
+        "next": [
+            "符文-点击收藏"
+        ],
+        "on_error": [
+            "符文-重启传奇商店"
+        ]
+    },
+    "符文-点击全部" : {
+        "recognition": "TemplateMatch",
+        "template": "全部.png",
+        "action": "Click",
+        "timeout": 2000,
+        "threshold": 0.85,
+        "next": [
+            "符文-点击收藏"
+        ],
+        "on_error": [
+            "符文-重启传奇商店"
+        ]
+    },
+    "符文-点击收藏": {
+        "recognition": "TemplateMatch",
+        "template": "收藏.png",
+        "action": "Click",
+        "next": [
+            "符文-合成卓越符文石"
+        ],
+        "on_error": [
+            "符文-重启传奇商店"
+        ]
+    },
+    "符文-合成卓越符文石": {
+        "recognition": "OCR",
+        "expected": "卓越符文石",
+        "action": "Click",
+        "post_delay": 1000,
+        "timeout": 5000,
+        "next": [
+            "符文-判断材料是否充足",
+            "符文-点击开始合成"
+        ],
+        "on_error": [
+            "符文-重启传奇商店"
+        ]
+    },
+    "符文-判断材料是否充足": {
+        "recognition": "OCR",
+        "expected": "缺少物品",
+        "action": "DoNothing",
+        "next": [
+            "符文-点击市场"
+        ],
+        "on_error": [
+            "符文-重启传奇商店"
+        ]
+    },
+    "符文-点击市场": {
+        "recognition": "TemplateMatch",
+        "template": "市场.png",
+        "action": "Click",
+        "next": [
+            "符文-点击购买"
+        ],
+        "on_error": [
+            "符文-重启传奇商店"
+        ]
+    },
+    "符文-点击开始合成": {
+        "recognition": "OCR",
+        "expected": "开始合成",
+        "action": "Click",
+        "post_delay": 6000,
+        "next": [
+            "符文-合成卓越符文石",
+            "符文-点击制作"
+        ],
+        "on_error": [
+            "符文-重启传奇商店"
+        ]
+    },
+    "符文-制作栏位已满" :{
+        "recognition": "TemplateMatch",
+        "template": "添加制作栏.png",
+        "action": "DoNothing",
+        "next": [
+            "符文-关闭传奇商店"
+        ],
+        "on_error": [
+            "符文-重启传奇商店"
+        ]
+    },
+    "符文-关闭传奇商店": {
+        "recognition": "DirectHit",
+        "action": "StopApp",
+        "package": "com.ripostegames.shopr",
+        "next": [
+            "等待1时4分"
+        ]
+    },
+    "等待1时4分": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "post_delay": 3840000,
+        "next": [
+            "月光"
+        ]
+    }
+}
